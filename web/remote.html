@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BiliTV Remote</title>
+  <style>body{font-family:system-ui,Segoe UI,Roboto,Arial;padding:12px;background:#111;color:#fff}button{margin:6px;padding:10px 14px}</style>
+</head>
+<body>
+  <h3>BiliTV 远程控制</h3>
+  <div>
+    <button onclick="send({action:'up'})">频道 ↑</button>
+    <button onclick="send({action:'down'})">频道 ↓</button>
+    <button onclick="send({action:'prev'})">上集</button>
+    <button onclick="send({action:'next'})">下集</button>
+  </div>
+  <div style="margin-top:10px">
+    <input id="tidx" placeholder="频道编号（从0开始或1开始）" />
+    <button onclick="tune()">跳转频道</button>
+  </div>
+  <script>
+    async function send(obj){
+      const res = await fetch('/api/control', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(obj) });
+      console.log(await res.json());
+    }
+    function tune(){
+      const v = document.getElementById('tidx').value.trim();
+      if(!v) return; const idx = Number(v); if(isNaN(idx)) return alert('请输入数字');
+      send({action:'tune', idx: idx});
+    }
+  </script>
+</body>
+</html>

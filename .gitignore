@@ -3,3 +3,4 @@ server.log
 server.pid
 .DS_Store
 .vercel/
+.vercel

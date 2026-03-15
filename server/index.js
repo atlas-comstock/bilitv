@@ -139,10 +139,12 @@ async function metadataWorker() {
   }
 }
 
-// start worker
-setInterval(metadataWorker, WORKER_CHECK_INTERVAL_MS);
-// run one pass on startup (non-blocking)
-metadataWorker().catch(()=>{});
+// start worker only in long-running server mode
+if (!process.env.VERCEL) {
+  setInterval(metadataWorker, WORKER_CHECK_INTERVAL_MS);
+  // run one pass on startup (non-blocking)
+  metadataWorker().catch(()=>{});
+}
 
 app.get('/api/channels', async (req, res) => {
   const channels = await loadChannels();
@@ -230,8 +232,12 @@ app.post('/api/import', async (req, res) => {
   res.json({ ok: true, channel });
 });
 
-const HOST = process.env.HOST || '::';
-app.listen(PORT, HOST, () => {
-  const hostLabel = (HOST === '::') ? 'localhost' : HOST;
-  console.log(`BiliTV server running at http://${hostLabel}:${PORT} (host=${HOST})`);
-});
+module.exports = app;
+
+if (require.main === module) {
+  const HOST = process.env.HOST || '::';
+  app.listen(PORT, HOST, () => {
+    const hostLabel = (HOST === '::') ? 'localhost' : HOST;
+    console.log(`BiliTV server running at http://${hostLabel}:${PORT} (host=${HOST})`);
+  });
+}

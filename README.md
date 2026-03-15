@@ -1,19 +1,19 @@
 # BiliTV
 
-> A retro-TV styled, channel-surf Bilibili web player.  
+> A retro-TV styled, channel-surf Bilibili web player.
 > 一个“像看电视一样换台”的 Bilibili 复古电视风播放器。
 
 ## Features / 功能亮点
 
-- Retro TV shell UI, OSD, scanline/noise, power on/off effects  
+- Retro TV shell UI, OSD, scanline/noise, power on/off effects
   复古电视外壳、频道 OSD、扫描线/噪点、开关机动画
-- Channel surfing with random next channel/video behavior  
+- Channel surfing with random next channel/video behavior
   频道冲浪体验，随机切台/随机下一条
-- TV-style playback feel (mouseless mode, masked controls, zap effect)  
+- TV-style playback feel (mouseless mode, masked controls, zap effect)
   电视化交互（无鼠标模式、控件遮罩、换台噪声插播）
-- Import BVID list as channels  
+- Import BVID list as channels
   支持粘贴 BV 列表导入频道
-- Remote control page + keyboard control  
+- Remote control page + keyboard control
   远程控制页 + 键盘控制
 
 ## Quick Start / 快速开始
@@ -52,7 +52,6 @@ Open / 打开: `http://localhost:3000`
 
 ## Screenshots / 运行截图
 
-![Screenshot 1](images/tg_image_206003897.jpeg)
 ![Screenshot 2](images/tg_image_2460782482.png)
 ![Screenshot 3](images/tg_image_3688463757.png)
 ![Screenshot 4](images/tg_image_776411316.png)
